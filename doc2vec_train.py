@@ -8,7 +8,7 @@ from gensim.models.doc2vec import TaggedDocument
 from gensim.models import Doc2Vec
 
 from load_data import load_vader
-from load_data import load_senti
+from load_data import load_sentiment140
 
 class TaggedLineSentence(object):
     def __init__(self, labeled_data, unlabeled_data):
