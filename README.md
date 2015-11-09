@@ -17,10 +17,10 @@
 
 由于在wordnet中，仅仅使用同义词数量较少，如果使用同义词和lemma_names则Synset之间交叉多，如何解决这一问题？我们目前仅仅使用同义词进行替换，而不使用lemma_names，一方面是因为这样会导致Synset数量尽量多，另一方面实现起来较容易。
 
-另一个问题，如何划分词汇到不同的Synset。步骤如下：
+另一个问题，如何划分词汇到不同的Synset，注意只考虑替换给定词典(如ANEW)中词汇。Map words to synset id, 步骤如下：
 
 * 计算所有ANEW中词汇的Synset
-* 合并：如果ANEW中的两个词A、B，A出现在B的Synset中，并且B出现在A的Synset中，则将A和B两个Synset合并
+* 建立单词-Synset_id映射表，合并：如果ANEW中的两个词A、B，A出现在B的Synset中，并且B出现在A的Synset中，则将A和B两个Synset合并
 
 
 ### 版本

@@ -1,8 +1,11 @@
 __author__ = 'NLP-PC'
 # all examples about wordnet from http://www.nltk.org/howto/wordnet.html
 from nltk.corpus import wordnet as wn
-game = wn.synsets('game')
-print(game)
+game = wn.synsets('color')
+for n in game:
+    print(n.name())
+
+exit()
 print(game[-1].similar_tos())
 
 print()
