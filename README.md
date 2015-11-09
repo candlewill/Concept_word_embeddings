@@ -20,8 +20,15 @@
 另一个问题，如何划分词汇到不同的Synset，注意只考虑替换给定词典(如ANEW)中词汇。Map words to synset id, 步骤如下：
 
 * 计算所有ANEW中词汇的Synset
-* 建立单词-Synset_id映射表，合并：如果ANEW中的两个词A、B，A出现在B的Synset中，并且B出现在A的Synset中，则将A和B两个Synset合并
+* 替换：对于一组相似同义词，用其中出现在ANEW词典中的词来替换掉语料库中其他所有词，例如，flag一词依据wordnet其同义词有：ease_up, iris, masthead, pin, sag，因此我们将语料库中所有ease_up, iris, masthead, pin, sag词汇用flag一次替换。注意：由于wordnet返回的词语中，包含了短语，如ease_up，用下划线连接起来的，对于这种情况，我们暂不处理。
+* 速度优化：数据结构使用dict()
 
+### 语料库
+
+因为使用Doc2vec来训练句向量是非监督式的，但是为了判断句向量质量，我们使用监督式方式，因此语料库分为两类：unlabeled data和labeled data
+
+* Unlabeled data: Stanford twitter corpus
+* Labeled data: Vader Twitter corpus
 
 ### 版本
 
