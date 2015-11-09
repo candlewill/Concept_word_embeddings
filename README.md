@@ -27,7 +27,7 @@
 
 因为使用Doc2vec来训练句向量是非监督式的，但是为了判断句向量质量，我们使用监督式方式，因此语料库分为两类：unlabeled data和labeled data
 
-* Unlabeled data: Stanford twitter corpus
+* Unlabeled data: Stanford twitter corpus from sentiment140
 * Labeled data: Vader Twitter corpus
 
 ### 版本

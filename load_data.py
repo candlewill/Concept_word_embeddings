@@ -41,3 +41,26 @@ def load_csv(filename):
         for line in reader:
             out.append(line)
     return out
+
+def load_sentiment140(filename):
+    print('start loading data...')
+    # ∏Ò Ω£∫"4","1467822272","Mon Apr 06 22:22:45 PDT 2009","NO_QUERY","ersle","I LOVE @Health4UandPets u guys r the best!! "
+    inpTweets = csv.reader(open(filename, 'rt', encoding='utf-8'),delimiter=',')
+    X = [] # sentiment
+    Y = [] # tweets
+    for row in inpTweets:
+        sentiment = (1 if row[0] == '4' else 0)
+        tweet = row[5]
+        X.append(sentiment)
+        Y.append(tweet)
+    # end loop
+    return Y, X
+
+def load_vader(filename):
+    with open(filename, 'r', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile, delimiter='\t')
+        texts, ratings = [], []
+        for line in reader:
+            texts.append(line[2])
+            ratings.append(float(line[1]))
+    return texts, ratings
