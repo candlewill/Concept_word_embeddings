@@ -11,3 +11,4 @@ def save_csv(data, filename):
 
 def dump_picle(data, filename, protocol=None):
     pickle.dump(data, open(filename, "wb"), protocol=protocol)  # protocol =4 for large file >= 4GB
+    print('saved.')

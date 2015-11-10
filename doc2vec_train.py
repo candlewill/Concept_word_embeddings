@@ -40,7 +40,7 @@ class TaggedLineSentence(object):
 def train_docvecs(Sentences):
     model = Doc2Vec(min_count=2, window=10, size=50, sample=1e-5, negative=5, workers=7)
     model.build_vocab(Sentences.to_array())
-    for epoch in range(10):
+    for epoch in range(30):
         print('epoch: %s' % epoch)
         model.train(Sentences.sentences_rand())
     model.save('./data/acc/docvecs_twitter.d2v')
@@ -49,7 +49,7 @@ def train_docvecs(Sentences):
 # Train doc2vec
 def train_doc2vec():
     labeled_data, _ = load_vader('./resource/tweets.txt')
-    unlabeled_data, _ = load_sentiment140('./resource/test_data.txt')
+    unlabeled_data, _ = load_sentiment140('/home/hs/Data/Corpus/training.csv')
     sentence = TaggedLineSentence(labeled_data, unlabeled_data)
     train_docvecs(sentence)
 

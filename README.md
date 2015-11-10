@@ -30,6 +30,10 @@
 * Unlabeled data: Stanford twitter corpus from sentiment140
 * Labeled data: Vader Twitter corpus
 
+### 句向量质量评估
+
+对于用替换和不替换的语料库训练的两份句向量，我们使用其中的labeled data部分，训练一个回归模型，通过分析回归模型的性能，来判断句向量的质量。
+
 ### 版本
 
 0.1.1

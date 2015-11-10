@@ -1,6 +1,10 @@
 __author__ = 'NLP-PC'
+# coding: utf-8
 import csv
 import os
+import pickle
+import gensim
+from gensim.models import Doc2Vec
 
 
 def load_anew(filepath=None):
@@ -44,17 +48,18 @@ def load_csv(filename):
 
 def load_sentiment140(filename):
     print('start loading data...')
-    # ¸ñÊ½£º"4","1467822272","Mon Apr 06 22:22:45 PDT 2009","NO_QUERY","ersle","I LOVE @Health4UandPets u guys r the best!! "
-    inpTweets = csv.reader(open(filename, 'rt', encoding='utf-8'),delimiter=',')
-    X = [] # sentiment
-    Y = [] # tweets
-    for row in inpTweets:
-        sentiment = (1 if row[0] == '4' else 0)
-        tweet = row[5]
-        X.append(sentiment)
-        Y.append(tweet)
-    # end loop
-    return Y, X
+    # ï¿½ï¿½Ê½ï¿½ï¿½"4","1467822272","Mon Apr 06 22:22:45 PDT 2009","NO_QUERY","ersle","I LOVE @Health4UandPets u guys r the best!! "
+    with open(filename, 'rt', encoding='ISO-8859-1') as f:
+        inpTweets = csv.reader(f, delimiter=',', quotechar='"')
+        X = []  # sentiment
+        Y = []  # tweets
+        for row in inpTweets:
+            sentiment = (1 if row[0] == '4' else 0)
+            tweet = row[5]
+            X.append(sentiment)
+            Y.append(tweet)
+        # end loop
+        return Y, X
 
 def load_vader(filename):
     with open(filename, 'r', encoding='utf-8') as csvfile:
@@ -64,3 +69,21 @@ def load_vader(filename):
             texts.append(line[2])
             ratings.append(float(line[1]))
     return texts, ratings
+
+
+def load_embeddings(arg=None):
+    if arg == 'zh_tw':  # dim = 400
+        model = gensim.models.Word2Vec.load_word2vec_format(None, binary=False)
+    elif arg == 'CVAT':  # dim = 50
+        model = gensim.models.Word2Vec.load(None)
+    elif arg == 'twitter':  # dim = 50
+        model = Doc2Vec.load('./data/acc/docvecs_twitter.d2v')
+    else:
+        raise Exception('Wrong Argument.')
+    print('Load Model Complete.')
+    return model
+
+
+def load_pickle(filename):
+    out = pickle.load(open(filename, "rb"))
+    return out
