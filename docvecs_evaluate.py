@@ -28,9 +28,11 @@ def run_build_docvecs():
     print(model.docvecs[0])
     print(model.docvecs['L_SENT_4'])
     _, ratings = load_vader('./resource/tweets.txt')
-    print(model.docvecs['L_SENT_4200'])
-    print(model.docvecs['L_SENT_4199'])
-    build_docvecs(model, ratings)
+
+    # Do not account the 1240 and 3516 -th item
+    r = ratings[:1240] + ratings[1241:3516] + ratings[3517:]
+
+    build_docvecs(model, r)
 
 
 def evaluate(true, pred, msg):
