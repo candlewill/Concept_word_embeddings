@@ -4,36 +4,36 @@ import random
 import re
 import string
 from load_data import load_pickle
-
 from gensim.models.word2vec import Word2Vec
 from gensim import utils
 from gensim.models.doc2vec import TaggedDocument
 from gensim.models import Doc2Vec
-
 from load_data import load_vader
 from load_data import load_sentiment140
 from save_data import dump_picle
 
+
 class TaggedLineSentence(object):
     def __init__(self, labeled_data, unlabeled_data):
-        self.labeled_data = labeled_data
-        self.unlabeled_data = unlabeled_data
+        self.data = labeled_data + unlabeled_data
+        self.L_len = len(labeled_data)
         self.tagged_sentences = []
 
     def __iter__(self):
-        for (id, sentence) in enumerate(self.labeled_data):
-            yield TaggedDocument(sentence, tags=['L_SENT_%s' % str(id)])
-        for (id, sentence) in enumerate(self.unlabeled_data):
-            yield TaggedDocument(sentence, tags=['U_SENT_%s' % str(id)])
+        for (id, sentence) in enumerate(self.data):
+            if id < self.L_len:
+                yield TaggedDocument(sentence.split(' '), tags=['L_SENT_%s' % str(id)])
+            else:
+                yield TaggedDocument(sentence.split(' '), tags=['U_SENT_%s' % str(id)])
 
     def to_array(self):
-        for (id, sentence) in enumerate(self.labeled_data):
-            self.tagged_sentences.append(
-                TaggedDocument(words=sentence, tags=['L_SENT_%s' % str(id)]))
-        for (id, sentence) in enumerate(self.unlabeled_data):
-            self.tagged_sentences.append(
-                TaggedDocument(words=sentence, tags=['U_SENT_%s' % str(id)]))
-
+        for (id, sentence) in enumerate(self.data):
+            if id < self.L_len:
+                self.tagged_sentences.append(
+                    TaggedDocument(words=sentence.split(' '), tags=['L_SENT_%s' % str(id)]))
+            else:
+                self.tagged_sentences.append(
+                    TaggedDocument(words=sentence.split(' '), tags=['U_SENT_%s' % str(id)]))
         return self.tagged_sentences
 
     def sentences_rand(self):
@@ -42,16 +42,16 @@ class TaggedLineSentence(object):
 
 
 def train_docvecs(Sentences):
-    model = Doc2Vec(min_count=10, window=100, size=100, sample=1e-5, negative=5, workers=7)
+    model = Doc2Vec(min_count=10, window=8, size=300, sample=1e-5, negative=5, workers=4)
     model.build_vocab(Sentences.to_array())
-    for epoch in range(30):
+    for epoch in range(100):
         print('epoch: %s' % epoch)
         model.train(Sentences.sentences_rand())
     model.save('./data/acc/docvecs_twitter.d2v')
     print('Training model complete, saved successful.')
 
 
-def preprocess(texts):
+def preprocess(texts, replace=False):
     # 表情符号替换，只采用那些明显带有正面或者负面情感的词语来替代
     emo_repl = {
         # 正面情感的表情
@@ -159,6 +159,7 @@ def preprocess(texts):
         preprocessed.append(tweet.strip())
     return preprocessed
 
+
 # Train doc2vec
 def train_doc2vec():
     # def isEnglish(s):
@@ -176,15 +177,16 @@ def train_doc2vec():
     #         print('*'*111)
     #         print(i,d)
     # exit()
-    unlabeled_data, _ = load_sentiment140('/home/hs/Data/Corpus/smalltestdata.csv')
-    labeled_data = preprocess(labeled_data)
+    unlabeled_data, _ = load_sentiment140('/home/hs/Data/Corpus/training.csv')
+    labeled_data = preprocess(labeled_data, replace=False)
     dump_picle(labeled_data, './data/acc/labeled_data.p')
-    unlabeled_data = preprocess(unlabeled_data)
+    unlabeled_data = preprocess(unlabeled_data, replace=False)
     dump_picle(unlabeled_data, './data/acc/unlabeled_data.p')
     # labeled_data = load_pickle('./data/acc/labeled_data.p')
     # unlabeled_data = load_pickle('./data/acc/unlabeled_data.p')
     sentence = TaggedLineSentence(labeled_data, unlabeled_data)
     train_docvecs(sentence)
+
 
 if __name__ == "__main__":
     train_doc2vec()

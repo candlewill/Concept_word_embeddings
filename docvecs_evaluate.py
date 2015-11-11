@@ -25,14 +25,13 @@ def build_docvecs(model, ratings):
 
 def run_build_docvecs():
     model = load_embeddings('twitter')
-    print(model.docvecs[0])
-    print(model.docvecs['L_SENT_4'])
+    simple_evaluate(model)
     _, ratings = load_vader('./resource/tweets.txt')
 
     # Do not account the 1240 and 3516 -th item
-    r = ratings[:1240] + ratings[1241:3516] + ratings[3517:]
+    # r = ratings[:1240] + ratings[1241:3516] + ratings[3517:]
 
-    build_docvecs(model, r)
+    build_docvecs(model, ratings)
 
 
 def evaluate(true, pred, msg):
@@ -81,6 +80,16 @@ def cv(data, target):
     linear_regression_multivariant(X_train, X_test, Y_train, Y_test, cost_fun='SVR')
     linear_regression_multivariant(X_train, X_test, Y_train, Y_test, cost_fun='KNN_Reg')
 
+
+def simple_evaluate(model):
+    print('词语向量包含的词汇有： （前200个）')
+    print(list(model.vocab.keys())[:200])
+    print('看一看词向量是什么样子的：')
+    print(model.docvecs[0])
+    print(model.docvecs['L_SENT_4'])
+    print('most_similar: ')
+    print(model.most_similar('good'))
+    print(model.most_similar('bad'))
 
 if __name__ == "__main__":
     run_build_docvecs()  # only at the first time, you should run this
