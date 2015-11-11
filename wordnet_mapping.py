@@ -34,7 +34,8 @@ def generate_extend_anew_synsets_data():
     build_synsets(anew_words)
     print('Saved.')
 
-def replacer(word):
+
+def replacer(word=None):
     syn_map = dict()
     synsets = load_csv('./data/synsets/ANEW_synsets.csv')
     for synset in synsets:
@@ -42,8 +43,9 @@ def replacer(word):
             for w in synset[1:]:
                 syn_map[w]=synset[0]
 
-    if word in syn_map.keys():
-        return syn_map[word]
+    # if word in syn_map.keys():
+    #     return syn_map[word]
+    return syn_map
 
 if __name__ == "__main__":
     print(replacer('well'))

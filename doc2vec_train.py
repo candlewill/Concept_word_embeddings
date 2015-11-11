@@ -11,6 +11,7 @@ from gensim.models import Doc2Vec
 from load_data import load_vader
 from load_data import load_sentiment140
 from save_data import dump_picle
+from wordnet_mapping import replacer as syn_replacer
 
 
 class TaggedLineSentence(object):
@@ -143,6 +144,7 @@ def preprocess(texts, replace=False):
             return True
 
     preprocessed = []
+    syn_map = syn_replacer()
     for tweet in texts:
         # if isEnglish(tweet):
         tweet = tweet.lower()
@@ -155,6 +157,12 @@ def preprocess(texts, replace=False):
         # remove all punctuation
         for c in string.punctuation:
             tweet = tweet.replace(c, " ")
+
+        if replace is True:
+            for word in tweet.split(' '):
+                replace_with = None if word not in syn_map.keys() else syn_map[word]
+                if replace_with is not None:
+                    tweet = tweet.replace(word, replace_with)
         tweet = re.sub(r" +", " ", tweet).strip()  # 删除单词之间的多余空格
         preprocessed.append(tweet.strip())
     return preprocessed
@@ -178,9 +186,9 @@ def train_doc2vec():
     #         print(i,d)
     # exit()
     unlabeled_data, _ = load_sentiment140('/home/hs/Data/Corpus/training.csv')
-    labeled_data = preprocess(labeled_data, replace=False)
+    labeled_data = preprocess(labeled_data, replace=True)
     dump_picle(labeled_data, './data/acc/labeled_data.p')
-    unlabeled_data = preprocess(unlabeled_data, replace=False)
+    unlabeled_data = preprocess(unlabeled_data, replace=True)
     dump_picle(unlabeled_data, './data/acc/unlabeled_data.p')
     # labeled_data = load_pickle('./data/acc/labeled_data.p')
     # unlabeled_data = load_pickle('./data/acc/unlabeled_data.p')
