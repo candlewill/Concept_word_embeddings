@@ -185,7 +185,7 @@ def train_doc2vec():
     #         print('*'*111)
     #         print(i,d)
     # exit()
-    unlabeled_data, _ = load_sentiment140('/home/hs/Data/Corpus/training.csv')
+    unlabeled_data, _ = load_sentiment140('/home/hs/Data/Corpus/smalltestdata.csv')
     labeled_data = preprocess(labeled_data, replace=True)
     dump_picle(labeled_data, './data/acc/labeled_data.p')
     unlabeled_data = preprocess(unlabeled_data, replace=True)
