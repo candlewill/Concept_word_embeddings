@@ -71,6 +71,22 @@
 #### 数据
 
 没有预处理：
+
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
+
+
+
 2015-11-11 21:43:32,627 - log_manager - INFO - linear regression Explained variance score: 0.37
 2015-11-11 21:43:32,627 - log_manager - INFO - MSE: 1.49259610132, MAE: 0.970785105026, Pearson_r: (0.61255020512241898, 1.1548008591482935e-87), R2: -0.347502977953, Spearman_r: (0.60526409023253303, 4.3034245706995162e-85), sqrt_MSE: 1.2217185033067797
 2015-11-11 21:43:32,672 - log_manager - INFO - linear regression Explained variance score: 0.37
