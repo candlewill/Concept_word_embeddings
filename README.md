@@ -11,7 +11,22 @@
 
 ### 动机
 
-进行本实验的动机是，我们观察到无论是使用Word2vec训练词向量，还是使用Doc2vec训练句向量，都面临一个问题，训练出的向量更多的表达的是语义相似性而非情感相似性，如，good和bad虽然表达的是相反的情感倾向，但由于其出现的上下文较相似，因此这两个词向量的比较相似。为了解决这个问题，我们提出对语料库进行特殊的预处理，将语料库中的情感词替换为其对应的高层概念——synset编号。例如，在WordNet同义词典中，baby和child属于同义词，因此对于语料库中出现baby和child的地方我们用synset_id替换。
+进行本实验的动机是，我们观察到无论是使用Word2vec训练词向量，还是使用Doc2vec训练句向量，都面临一个问题，训练出的向量更多的表达的是语义相似性而非情感相似性，如，good和bad虽然表达的是相反的情感倾向，但由于其出现的上下文较相似，因此这两个词向量的比较相似。
+
+### 方法
+
+为了解决这个问题，我们提出对语料库进行特殊的预处理，将语料库中的情感词替换为其对应的高层概念——synset编号。例如，在WordNet同义词典中，baby和child属于同义词，因此对于语料库中出现baby和child的地方我们用synset_id替换。
+在NLTK提供的wordnet工具中，提供了每一个词汇的同义词，然而并没有synset ID。因此，我们将ANEW中同义词替换为ANEW中的词汇。也就是说，我们通过wordnet搜寻所有ANEW中词汇的同义词，然后出现同义词的地方用anew替换。例如：
+替换之前的文本如下图：
+
+![替换之前](http://7xo9ej.com1.z0.glb.clouddn.com/替换之后.png "图1：替换之前")
+
+替换之后的文本如下图：
+
+![替换之后](http://7xo9ej.com1.z0.glb.clouddn.com/替换之前.png "图2：替换之后")
+
+从上图中可以发现，第一行中，love替换为了passion，第二行中good替换为了serious。这是因为passion和serious为ANEW词典中的词汇，而依据wordnet，love是passion的同义词，good是serious的同义词，见wordnet[在线演示网址](http://wordnetweb.princeton.edu/perl/webwn?s=serious&sub=Search+WordNet&o2=&o0=1&o8=1&o1=1&o7=&o5=&o9=&o6=&o3=&o4=&h=0000000)，其他替换方式类同。更多详细比较，见resource目录中的相关txt文件。
+
 
 ### Synset替换需要克服的问题
 
