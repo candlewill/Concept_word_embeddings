@@ -44,16 +44,16 @@
 
 ### Setup
 
-词向量维数：300
-windows size: 8
-min count: 10
-epoch: 100
+* 词向量维数：300
+* windows size: 8
+* min count: 10
+* epoch: 100
 
 ### 实验结果
 
-概括：有预处理比没有预处理性能好，
+概括：有预处理比没有预处理性能好，同义词是否替换对实验结果影响不大
 
-数据
+#### 数据
 
 没有预处理：
 2015-11-11 21:43:32,627 - log_manager - INFO - linear regression Explained variance score: 0.37
@@ -80,8 +80,34 @@ epoch: 100
 2015-11-11 23:36:14,885 - log_manager - INFO - MSE: 2.01645151621, MAE: 1.10575613528, Pearson_r: (0.46131273504861253, 1.7051785857700428e-45), R2: -1.1185774545, Spearman_r: (0.40850869323860917, 4.0091512487600461e-35), sqrt_MSE: 1.420018139394025
 
 预处理+同义词替换：
+2015-11-12 13:37:10,299 - log_manager - INFO - linear regression Explained variance score: 0.50
+2015-11-12 13:37:10,299 - log_manager - INFO - MSE: 1.18038914619, MAE: 0.85878648801, Pearson_r: (0.70974246423615184, 1.2383132100315053e-129), R2: 0.121271038151, Spearman_r: (0.70707766629922053, 2.9759233629594366e-128), sqrt_MSE: 1.0864571534069252
+2015-11-12 13:37:10,388 - log_manager - INFO - linear regression Explained variance score: 0.50
+2015-11-12 13:37:10,388 - log_manager - INFO - MSE: 1.17572872216, MAE: 0.857236881556, Pearson_r: (0.71066619047925106, 4.0787325544405145e-130), R2: 0.107070184954, Spearman_r: (0.70800020526544993, 9.9395544341388438e-129), sqrt_MSE: 1.0843102518001932
+2015-11-12 13:37:10,710 - log_manager - INFO - linear regression Explained variance score: 0.51
+2015-11-12 13:37:10,710 - log_manager - INFO - MSE: 1.15633277046, MAE: 0.851493165039, Pearson_r: (0.71596164673843599, 6.4333970885345271e-133), R2: -0.0188708366953, Spearman_r: (0.71316382374840792, 1.9808536854345207e-131), sqrt_MSE: 1.0753291451717815
+2015-11-12 13:37:20,691 - log_manager - INFO - linear regression Explained variance score: 0.49
+2015-11-12 13:37:20,691 - log_manager - INFO - MSE: 1.20673631577, MAE: 0.866939930114, Pearson_r: (0.70360523364732996, 1.7769804325105011e-126), R2: 0.135825053535, Spearman_r: (0.7029631109243577, 3.7607682055022545e-126), sqrt_MSE: 1.0985155054751432
+2015-11-12 13:37:24,723 - log_manager - INFO - linear regression Explained variance score: 0.09
+2015-11-12 13:37:24,723 - log_manager - INFO - MSE: 2.14915481032, MAE: 1.13988959412, Pearson_r: (0.44050915767949778, 3.4481452164542079e-41), R2: -1.25050146879, Spearman_r: (0.3756021409491484, 1.5459579149703661e-29), sqrt_MSE: 1.4659995942423818
 
 ### 版本
 
-0.1.1
+0.1.2
 
+### License
+
+[Yunchao He] @ [YZU]
+
+### Contact Us
+
+* yunchaohe@gmail.com
+* [http://sentiment-mining.blogspot.com/]
+
+**NOTICE: Still developing, more usefull function later.**
+
+**Any advice and suggest would be welcomed, thank you.**
+
+[Yunchao He]: https://facebook.com/yunchao.h
+[http://sentiment-mining.blogspot.com/]: http://sentiment-mining.blogspot.tw/
+[YZU]: http://www.yzu.edu.tw/
