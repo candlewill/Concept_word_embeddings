@@ -237,14 +237,14 @@
 1. 发现ANEW中的同义词：
 
  * 对于ANEW中的词汇A、B，如果A出现在B的同义词集合中，**同时**B也出现在A的同义词集合中，则认为A、B是同义词，最终发现ANEW中仅有如下4对同义词：
-->
+
 | 单词A | 单词B |
 |-------|--------|
 |ache | hurt |
 |mangle |mutilate |
 |massacre | slaughter|
 |mildew | mold|
-<-
+
 
  *  对于ANEW中的词汇A、B，如果A出现在B的同义词集合中，**或者**B出现在A的同义词集合中，则认为A、B是同义词，最终发现ANEW中仅有如下4对同义词：
 
