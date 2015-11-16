@@ -236,7 +236,15 @@
 
 1. 发现ANEW中的同义词：
 
-⋅⋅1. 对于ANEW中的词汇A、B，如果A出现在B的同义词集合中，同时B也出现在A的同义词集合中，则认为A、B是同义词，最终发现ANEW中仅有如下4对同义词：
+``1. 对于ANEW中的词汇A、B，如果A出现在B的同义词集合中，同时B也出现在A的同义词集合中，则认为A、B是同义词，最终发现ANEW中仅有如下4对同义词：
+
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
+
 
 ### 版本
 
