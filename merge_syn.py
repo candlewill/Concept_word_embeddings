@@ -1,4 +1,5 @@
 from load_data import load_csv
+import copy
 
 
 def merge_synonym():
@@ -14,9 +15,8 @@ def merge_synonym():
     #     zz=zz.union(set(ll))
     # print(len(zz))
     # exit()
-    tmp = syn_clusters
     outs = []
-    for a, b in tmp:
+    for a, b in syn_clusters:
         # 如果a, b 都没有出现过
         if all(len(set([a, b]) & set(l)) == 0 for l in outs):
             # 创建新的
@@ -25,15 +25,51 @@ def merge_synonym():
         # 否则
         else:
             # 合并进去
-            for i, l in enumerate(outs):
-                if set([a, b]) & set(l) != set():
+            for i, k in enumerate(outs):
+                if set([a, b]) & set(k) != set():
                     outs[i] = list(set(outs[i] + [a, b]))
                     break
-    leng = 0
-    for i, j in enumerate(outs):
-        leng += len(j)
-        print('| cluster_%s | %s |' % (str(i), str(j)))
-    print(leng)
+
+    # leng = 0
+    # for i, j in enumerate(outs):
+    #     leng += len(j)
+    #     print('| cluster_%s | %s |' % (str(i), str(j)))
+    # print(leng)
+    return outs
+
+
+def build_syn_map(ANEW_synsets, merged_ANEW):
+    def find_index(word):
+        for i, syn in enumerate(ANEW_synsets):
+            if str(syn[0]) == str(word):
+                return i
+        print('__%s__' % word)
+
+    outs = []
+    for words in merged_ANEW:
+        result = set()
+        for w in words:
+            ind = find_index(w)
+            result = result | set(ANEW_synsets[ind])
+            # print(result)
+        outs.append(sorted(list(result)))
+    for iterm in outs:
+        print('| %s | ``` %s ``` |' % (str(iterm[0]), str(iterm[1:])))
+    exit()
+    syn_map = dict()
+    for synset in outs:
+        if len(synset) > 1:
+            for m in synset[1:]:
+                syn_map[m] = synset[0]
+
+    # if word in syn_map.keys():
+    #     return syn_map[word]
+    return syn_map
+
+
 
 if __name__ == '__main__':
-    merge_synonym()
+    outs = merge_synonym()
+    syn_map = load_csv('./data/synsets/ANEW_synsets.csv')
+    replace_map = build_syn_map(syn_map, outs)
+    print(replace_map['wallow'])
