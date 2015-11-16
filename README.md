@@ -272,7 +272,21 @@
 | cluster_5 | ['affection', 'heart', 'spirit'] |
 | cluster_6 | ['agony', 'torture'] |
 | ... | ... |
+
 完整列表见：[merge_result.md](./data/synsets/merge_result.md)
+
+2. 生成替换表格：
+
+ * 对于方案一中的四对同义词，我们用选择一个词汇来替换一组词汇：
+ 
+ | 单词 | 同义词 | 单词 |同义词|
+ |---------|---------|------------|-------------|
+ |ache|hurt|hurt|ache damage detriment distress injury pain suffer suffering|
+ |mangle|maul mutilate|mutilate|mangle|
+ |massacre|slaughter|slaughter|butcher massacre thrashing|
+ |mildew|mold|mold|cast determine mildew model shape|
+
+
 
 ### 寻找Synset_ID
 
