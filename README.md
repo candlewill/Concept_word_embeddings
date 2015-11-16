@@ -236,7 +236,7 @@
 
 1. 发现ANEW中的同义词：
 
- * 对于ANEW中的词汇A、B，如果A出现在B的同义词集合中，**同时**B也出现在A的同义词集合中，则认为A、B是同义词，最终发现ANEW中仅有如下4对同义词：
+ i. 对于ANEW中的词汇A、B，如果A出现在B的同义词集合中，**同时**B也出现在A的同义词集合中，则认为A、B是同义词，最终发现ANEW中仅有如下4对同义词：
 
   | 单词A | 单词B |
  |-------|--------|
@@ -245,7 +245,7 @@
  |massacre | slaughter|
  |mildew | mold|
 
- * 对于ANEW中的词汇A、B，如果A出现在B的同义词集合中，**或者**B出现在A的同义词集合中，则认为A、B是同义词，最终发现ANEW中符合这种规律的词汇较多，详见[data/synsets/ANEW_synonym_pairs.md](./data/synsets/ANEW_synonym_pairs.md)，截取一部分如下：
+ ii. 对于ANEW中的词汇A、B，如果A出现在B的同义词集合中，**或者**B出现在A的同义词集合中，则认为A、B是同义词，最终发现ANEW中符合这种规律的词汇较多，详见[data/synsets/ANEW_synonym_pairs.md](./data/synsets/ANEW_synonym_pairs.md)，截取一部分如下：
  
   | 单词A | 单词B |
  |-------|-------|
@@ -260,7 +260,7 @@
  | alone | lonely | 
  | ... | ... |
 
- * 可以发现上述方法中，部分词汇重复出现，如air和breeze，air和tune都是同义词，这是因为通过查询wordnet，air的同义词包含tune和breeze，这三个词都出现在ANEW中。我们对此进一步合并，合并方式是对于上述表格中的任意两行，如果有相同的单词，则合并，形成如下表格：
+ iii. 可以发现上述方法中，部分词汇重复出现，如air和breeze，air和tune都是同义词，这是因为通过查询wordnet，air的同义词包含tune和breeze，这三个词都出现在ANEW中。我们对此进一步合并，合并方式是对于上述表格中的任意两行，如果有相同的单词，则合并，形成如下表格：
  
   | cluster_id | 单词集合 |
  |-------|-------|
@@ -285,8 +285,17 @@
  |mangle|maul mutilate|mutilate|mangle|
  |massacre|slaughter|slaughter|butcher massacre thrashing|
  |mildew|mold|mold|cast determine mildew model shape|
-
-
+ 
+ 替换方式：
+ 
+ | 替换单词 | 原始单词 |
+ |-------|-------|
+ |hurt|ache damage detriment distress injury pain suffer suffering |
+ |mangle|maul mutilate|
+ |slaughter|butcher massacre thrashing|
+ |mold|cast determine mildew model shape|
+ 
+ * 对于方案
 
 ### 寻找Synset_ID
 
