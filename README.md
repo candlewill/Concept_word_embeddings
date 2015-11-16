@@ -299,12 +299,12 @@
  
  * 对于方案iii，替换关系如下：
  |替换词汇|原词汇|
-|-----------|--------------|
-| abuse | ``` ['bribe', 'corrupt', 'crooked', 'defile', 'diss', 'insult', 'maltreatment', 'mistreat', 'misuse', 'pervert', 'twist'] ``` |
-| ace | ``` ['allied_command_europe', 'angiotensin_converting_enzyme', 'asterisk', 'breeze_through', 'champ', 'champion', 'chomp', 'headliner', 'leading', 'one', 'star', 'star_topology', 'supporter'] ``` |
-| ache | ``` ['annoyance', 'damage', 'detriment', 'disruptive', 'distress', 'disturb', 'fuss', 'hurt', 'injure', 'injury', 'nuisance', 'offend', 'pain', 'perturb', 'pique', 'price', 'shock', 'suffer', 'suffering', 'transgress', 'trauma', 'trouble', 'trouble_oneself', 'troubled', 'worry', 'wound', 'wounds', 'wrong'] ``` |
-| addict | ``` ['addicted'] ``` |
-|...|...|
+ |-----------|--------------|
+ | abuse | ``` ['bribe', 'corrupt', 'crooked', 'defile', 'diss', 'insult', 'maltreatment', 'mistreat', 'misuse', 'pervert', 'twist'] ``` |
+ | ace | ``` ['allied_command_europe', 'angiotensin_converting_enzyme', 'asterisk', 'breeze_through', 'champ', 'champion', 'chomp', 'headliner', 'leading', 'one', 'star', 'star_topology', 'supporter'] ``` |
+ | ache | ``` ['annoyance', 'damage', 'detriment', 'disruptive', 'distress', 'disturb', 'fuss', 'hurt', 'injure', 'injury', 'nuisance', 'offend', 'pain', 'perturb', 'pique', 'price', 'shock', 'suffer', 'suffering', 'transgress', 'trauma', 'trouble', 'trouble_oneself', 'troubled', 'worry', 'wound', 'wounds', 'wrong'] ``` |
+ | addict | ``` ['addicted'] ``` |
+ |...|...|
 
 完整见[replace.md](./data/synsets/replace.md)
 
