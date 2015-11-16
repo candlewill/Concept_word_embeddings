@@ -298,6 +298,7 @@
  可以发现，这个替换方式与之前实验相差不大，因此下略。
  
  * 对于方案iii，替换关系如下：
+ 
  |替换词汇|原词汇|
  |-----------|--------------|
  | abuse | ``` ['bribe', 'corrupt', 'crooked', 'defile', 'diss', 'insult', 'maltreatment', 'mistreat', 'misuse', 'pervert', 'twist'] ``` |
