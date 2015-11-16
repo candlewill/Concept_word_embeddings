@@ -228,9 +228,18 @@
 2015-11-12 20:34:30,129 - log_manager - INFO - MSE: 1.95386840222, MAE: 1.07035624293, Pearson_r: (0.49626371893238819, 1.9700385540358862e-53), R2: -0.71685946257, Spearman_r: (0.4558146100661154, 2.5051703100377535e-44), sqrt_MSE: 1.3978084282966192
 ```
 
+### 合并同义词
+
+由于ANEW中的词汇之间存在同义词现象，为了进一步减少语料库替换后的词汇量，因此我们将属于同义词的ANEW词汇进行合并，然后再替换。例如，ANEW中的词汇ache和hurt是同义词，同时依据wordnet，ache的同义词有hurt，hurt的同义词有ache, damage, detriment, distress, injury, pain, suffer, suffering，因此，将语料库中出现hurt, ache, damage, detriment, distress, injury, pain, suffer, suffering的地方都用hurt替换。
+
+##### 方法
+
+1. 发现ANEW中的同义词：
+⋅⋅1. 对于ANEW中的词汇A、B，如果A出现在B的同义词集合中，同时B也出现在A的同义词集合中，则认为A、B是同义词，最终发现ANEW中仅有如下4对同义词：
+
 ### 版本
 
-0.1.2
+0.2.0
 
 ### License
 
@@ -243,9 +252,9 @@
 * Weibo: [http://weibo.com/heyunchao](http://weibo.com/heyunchao)
 * Facebook: [https://facebook.com/yunchao.h](https://facebook.com/yunchao.h)
 
-**NOTICE: Still developing, more usefull function later.**
+**NOTICE: This project is still under developing, providing more useful functions in future.**
 
-**Any advice and suggest would be welcomed, thank you.**
+**Any advice and suggest would be welcomed, thank you for your subscribe.**
 
 [Yunchao He]: https://facebook.com/yunchao.h
 [http://sentiment-mining.blogspot.com/]: http://sentiment-mining.blogspot.tw/
