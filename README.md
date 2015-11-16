@@ -249,18 +249,18 @@
  
  | 单词A | 单词B |
  |-------|-------|
-| ... | ... | 
-| agony | torture | 
-| air | breeze | 
-| air | tune | 
-| alert | alive | 
-| alert | lively | 
-| alert | merry | 
-| alert | spanking | 
-| alone | lonely | 
-| ... | ... |
+ | ... | ... | 
+ | agony | torture | 
+ | air | breeze | 
+ | air | tune | 
+ | alert | alive | 
+ | alert | lively | 
+ | alert | merry | 
+ | alert | spanking | 
+ | alone | lonely | 
+ | ... | ... |
 
- 3. 可以发现上述方法2中，部分词汇重复出现，如air和torture，air和tune都是同义词。然而，
+ 3. 可以发现上述方法2中，部分词汇重复出现，如air和torture，air和tune都是同义词。，
 
 
 ### 版本
