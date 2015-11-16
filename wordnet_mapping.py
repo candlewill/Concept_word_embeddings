@@ -48,6 +48,8 @@ def replacer(word=None):
     return syn_map
 
 if __name__ == "__main__":
+    replacer = replacer()
+    print(replacer['hurt'])
     print(get_synsets('handsome'))
     exit()
     v=['bag', 'good', 'bad', 'cyand']
