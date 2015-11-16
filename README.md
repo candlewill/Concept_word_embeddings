@@ -299,7 +299,7 @@
  
  * 对于方案iii，替换关系如下：
  
- |替换词汇|原词汇|
+ | 替换词汇 | 原始词汇 |
  |-----------|--------------|
  | abuse | ``` ['bribe', 'corrupt', 'crooked', 'defile', 'diss', 'insult', 'maltreatment', 'mistreat', 'misuse', 'pervert', 'twist'] ``` |
  | ace | ``` ['allied_command_europe', 'angiotensin_converting_enzyme', 'asterisk', 'breeze_through', 'champ', 'champion', 'chomp', 'headliner', 'leading', 'one', 'star', 'star_topology', 'supporter'] ``` |
