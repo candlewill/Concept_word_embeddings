@@ -261,18 +261,18 @@
 
  iii. 可以发现上述方法中，部分词汇重复出现，如air和breeze，air和tune都是同义词，这是因为通过查询wordnet，air的同义词包含tune和breeze，这三个词都出现在ANEW中。我们对此进一步合并，合并方式是对于上述表格中的任意两行，如果有相同的单词，则合并，形成如下表格：
  
-  | cluster_id | 单词集合 |
+ | cluster_id | 单词集合 |
  |-------|-------|
-| cluster_0 | ['abuse', 'corrupt', 'insult', 'pervert'] |
-| cluster_1 | ['champion', 'ace', 'champ', 'star'] |
-| cluster_2 | ['damage', 'offend', 'wounds', 'troubled', 'nuisance', 'injury', 'trauma', 'ache', 'hurt', 'trouble', 'pain'] |
-| cluster_3 | ['addict', 'addicted'] |
-| cluster_4 | ['reward', 'honor', 'advantage'] |
-| cluster_5 | ['affection', 'heart', 'spirit'] |
-| cluster_6 | ['agony', 'torture'] |
-| ... | ... |
+ | cluster_0 | ['abuse', 'corrupt', 'insult', 'pervert'] |
+ | cluster_1 | ['champion', 'ace', 'champ', 'star'] |
+ | cluster_2 | ['damage', 'offend', 'wounds', 'troubled', 'nuisance', 'injury', 'trauma', 'ache', 'hurt', 'trouble', 'pain'] |
+ | cluster_3 | ['addict', 'addicted'] |
+ | cluster_4 | ['reward', 'honor', 'advantage'] |
+ | cluster_5 | ['affection', 'heart', 'spirit'] |
+ | cluster_6 | ['agony', 'torture'] |
+ | ... | ... |
 
-完整列表见：[merge_result.md](./data/synsets/merge_result.md)
+ 完整列表见：[merge_result.md](./data/synsets/merge_result.md)
 
 2. 生成替换表格：
 
@@ -306,7 +306,7 @@
  | addict | ``` ['addicted'] ``` |
  |...|...|
 
-完整见[replace.md](./data/synsets/replace.md)
+ 完整见[replace.md](./data/synsets/replace.md)
 
 ##### 实验结果
 
