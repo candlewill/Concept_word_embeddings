@@ -88,7 +88,7 @@ def simple_evaluate(model):
     print(model.docvecs[0])
     print(model.docvecs['L_SENT_4'])
     print('most_similar: ')
-    print(model.most_similar('good'))
+    print(model.most_similar('awesome'))
     print(model.most_similar('bad'))
 
 if __name__ == "__main__":

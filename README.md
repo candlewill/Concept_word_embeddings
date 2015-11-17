@@ -310,6 +310,36 @@
 
 ##### 实验结果
 
+替换之后的文本如下所示，完整见[替换之后（合并）.md](./resource/替换之后（合并）.md)：
+
+|编号|句子|
+|--------|------------|
+| 0 | somehow i was blessed with some really amazing friends in my life who beloved me and send encouragement when i am not feeling awesome so lucky |
+| 1 | yay another adept phone interview |
+| 2 | we were 17 deep last amobarbital_sodium and the bebebebelovedddd was so arch everybody felt it even the band i bebebebelovedddd bebebebelovedddd bebebebelovedddd having adept ppl in my corner |
+| 3 | lmao amazing |
+| 4 | two words that should die this year sexting and jeggings die die die |
+| 5 | today i am grateful for adept food adept wine and adept friends gratitude fb |
+| ... | ... |
+
+按照[replace.md](./data/synsets/replace.md)替换的，可以和[替换之前](./resource/替换之前.txt)比较。
+
+实验结果：小语料库
+
+| Metrics        | MSE           | MAE  |Pearson_r|
+| ------------- |-------------| ------------| ------------- |
+| ordinary least squares      | 1.23029025308| 0.879368350446 | 0.69592347915028918|
+| Ridge Regression              | 1.21413194324 | 0.873161346198 | 0.69931288351577536 |
+| Bayesian Regression        |1.20748435487| 0.869758703768| **0.70041543666743111** |
+| SVR                                     | 1.26198284097 | 0.894285957943 | 0.68751497797359429|
+| KNN Reg                            | 1.89364786823| 1.06245751327| 0.51674357486142264 |
+
+实验结果：完整语料库
+
+##### 解释
+
+从小语料库的实验结果可以发现，合并ANEW词汇之后再进行替换的方式比
+
 ### 寻找Synset_ID
 
 ### 版本

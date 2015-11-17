@@ -12,7 +12,7 @@ from load_data import load_vader
 from load_data import load_sentiment140
 from save_data import dump_picle
 # from wordnet_mapping import replacer as syn_replacer
-from merge_syn import replace_map as syn_replacer
+from merge_syn import replacer as syn_replacer
 
 class TaggedLineSentence(object):
     def __init__(self, labeled_data, unlabeled_data):
@@ -185,7 +185,7 @@ def train_doc2vec():
     #         print('*'*111)
     #         print(i,d)
     # exit()
-    unlabeled_data, _ = load_sentiment140('/home/hs/Data/Corpus/smalltestdata.csv')
+    unlabeled_data, _ = load_sentiment140('/home/hs/Data/Corpus/training.csv')
     labeled_data = preprocess(labeled_data, replace=True)
     dump_picle(labeled_data, './data/acc/labeled_data.p')
     unlabeled_data = preprocess(unlabeled_data, replace=True)

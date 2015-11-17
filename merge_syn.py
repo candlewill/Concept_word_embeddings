@@ -76,6 +76,7 @@ def replacer():
     syn_map = load_csv('./data/synsets/ANEW_synsets.csv')
     replace_map = build_syn_map(syn_map, outs)
     print(replace_map['gusto'])
+    return replace_map
 
 
 if __name__ == '__main__':
