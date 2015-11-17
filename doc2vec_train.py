@@ -11,8 +11,8 @@ from gensim.models import Doc2Vec
 from load_data import load_vader
 from load_data import load_sentiment140
 from save_data import dump_picle
-from wordnet_mapping import replacer as syn_replacer
-
+# from wordnet_mapping import replacer as syn_replacer
+from merge_syn import replace_map as syn_replacer
 
 class TaggedLineSentence(object):
     def __init__(self, labeled_data, unlabeled_data):

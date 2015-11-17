@@ -249,7 +249,6 @@
  
   | 单词A | 单词B |
  |-------|-------|
- | ... | ... | 
  | agony | torture | 
  | air | breeze | 
  | air | tune | 
@@ -309,9 +308,9 @@
 
 完整见[replace.md](./data/synsets/replace.md)
 
+##### 实验结果
+
 ### 寻找Synset_ID
-
-
 
 ### 版本
 

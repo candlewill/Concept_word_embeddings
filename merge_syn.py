@@ -53,9 +53,13 @@ def build_syn_map(ANEW_synsets, merged_ANEW):
             result = result | set(ANEW_synsets[ind])
             # print(result)
         outs.append(sorted(list(result)))
-    for iterm in outs:
-        print('| %s | ``` %s ``` |' % (str(iterm[0]), str(iterm[1:])))
-    exit()
+
+    for term in ANEW_synsets:
+        if all(term[0] not in out for out in outs) and len(term) > 1:
+            outs.append(term)
+    # for iterm in outs:
+    #     print('| %s | ``` %s ``` |' % (str(iterm[0]), str(iterm[1:])))
+    # exit()
     syn_map = dict()
     for synset in outs:
         if len(synset) > 1:
@@ -67,9 +71,12 @@ def build_syn_map(ANEW_synsets, merged_ANEW):
     return syn_map
 
 
-
-if __name__ == '__main__':
+def replacer():
     outs = merge_synonym()
     syn_map = load_csv('./data/synsets/ANEW_synsets.csv')
     replace_map = build_syn_map(syn_map, outs)
-    print(replace_map['wallow'])
+    print(replace_map['gusto'])
+
+
+if __name__ == '__main__':
+    replacer()
